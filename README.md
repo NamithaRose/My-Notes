@@ -133,6 +133,13 @@ Backend:
 - MongoDB + Mongoose
 - JWT Authentication
 - bcrypt for password hashing
+---------------------------------------------------------
+SCREENSHOTS
+---------------------------------------------------------
+<img width="1001" height="553" alt="image" src="https://github.com/user-attachments/assets/5d003186-e2c1-4744-a9f0-5065350db965" />
+<img width="1021" height="628" alt="image" src="https://github.com/user-attachments/assets/cb9e4140-6d14-4e9d-8f39-8854327bf416" />
+<img width="1018" height="817" alt="image" src="https://github.com/user-attachments/assets/f68b4508-6a27-419d-ad7e-92d214071b4d" />
+
 
 ---------------------------------------------------------
 FUTURE IMPROVEMENTS
