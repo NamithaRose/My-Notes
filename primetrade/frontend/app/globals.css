@@ -1,0 +1,276 @@
+/* app/globals.css — BIGGER UI for high visibility (Unified & cleaned) */
+
+/* ---------------- Color variables ---------------- */
+:root{
+  --bg: #06101a;
+  --panel: rgba(255,255,255,0.03);
+  --card: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  --muted: #9aa7bf;
+  --accent: #6b5cff;
+  --accent-2: #00cfff;
+  --success: #23c48e;
+  --danger: #ff5c6c;
+
+  /* dashboard/dark card color used for matching selects and cards */
+  --card-dark: #0f1720;        /* base dark panel */
+  --card-dark-2: #1E1E2F;      /* slightly lighter for select bg */
+  --card-border: rgba(255,255,255,0.03);
+  --ui-text: #eef6ff;
+}
+
+/* ---------------- Base page ---------------- */
+html, body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(180deg,#05121a 0%, #02101a 100%);
+  color: var(--ui-text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px;
+}
+
+/* Headings — larger for high visibility */
+h1 { font-size: 3rem; margin: 0 0 12px; line-height:1.05; }
+h2 { font-size: 2.25rem; margin: 0 0 8px; }
+.lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 12px; }
+
+/* ---------------- Cards & surfaces ---------------- */
+.card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 26px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 18px 60px rgba(2,8,20,0.75);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.card:hover { transform: translateY(-8px); box-shadow: 0 28px 80px rgba(2,8,20,0.8); }
+
+/* ---------------- Forms — big & consistent ---------------- */
+
+/* base input style (used for input + select wrappers when matching) */
+.form-control {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--ui-text);
+  border-radius: 14px;
+  padding: 18px 18px;
+  font-size: 1.15rem;
+  height: 56px;
+  box-sizing: border-box;
+}
+.form-control::placeholder { color: rgba(230,238,248,0.45); }
+
+.form-control:focus {
+  outline: none;
+  border-color: rgba(107,92,255,0.95);
+  box-shadow: 0 12px 36px rgba(107,92,255,0.12);
+}
+
+/* textarea bigger */
+textarea.form-control { min-height: 140px; padding: 14px; height: auto; }
+
+/* ---------------- Buttons — big & obvious ---------------- */
+.btn {
+  border-radius: 14px;
+  padding: 14px 20px;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .12s ease;
+}
+.btn-primary {
+  background: linear-gradient(90deg,var(--accent), #5a3bff);
+  color: white;
+  border: none;
+  box-shadow: 0 18px 48px rgba(107,92,255,0.12);
+}
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 28px 60px rgba(107,92,255,0.16); }
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+/* ---------------- Form layout helpers ---------------- */
+.form-column { display:flex; flex-direction:column; gap:14px; }
+.form-row { display:flex; gap:14px; align-items:center; }
+
+/* ---------------- Controls row (search, select, reset) ---------------- */
+.controls-bar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+/* base control sizing — all controls same height */
+.control-input,
+.control-select,
+.control-btn {
+  height: 56px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* search input: grows */
+.control-input {
+  flex: 1 1 0%;
+  min-width: 180px;
+  padding: 0 16px;
+}
+
+/* select: fixed width, but visually matches */
+.control-select {
+  width: 220px;
+  padding: 0 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: var(--card-dark-2);
+  color: #ffffff !important;
+  border: 2px solid #2A2A40;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+/* add chevron via pseudo backgrounds for compatibility */
+.control-select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(255,255,255,0.12) 50%),
+    linear-gradient(135deg, rgba(255,255,255,0.12) 50%, transparent 50%),
+    linear-gradient(to right, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
+  background-position:
+    calc(100% - 18px) calc(50% - 6px),
+    calc(100% - 13px) calc(50% - 6px),
+    100% 0;
+  background-size: 6px 6px,6px 6px,1px 100%;
+  background-repeat: no-repeat;
+}
+
+/* ensure options readable */
+.control-select option {
+  background: var(--card-dark-2) !important;
+  color: #fff !important;
+}
+
+/* reset button visually matching */
+.control-btn {
+  padding: 0 20px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* primary variant for the reset if desired */
+.control-btn.primary {
+  background: linear-gradient(90deg,var(--accent), #5a3bff);
+  color: #fff;
+  border: none;
+}
+
+/* responsive stack for small screens */
+@media (max-width: 720px) {
+  .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .control-select { width: 100%; }
+  .control-btn { width: 100%; }
+}
+
+/* ---------------- Task card style ---------------- */
+.task-card {
+  border-radius: 14px;
+  padding: 20px;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.task-title { font-size: 1.25rem; font-weight:700; color: #fff; }
+.task-desc { color: var(--muted); font-size: 1.05rem; margin-top: 8px; }
+
+/* actions */
+.actions { display:flex; gap:12px; align-items:center; }
+.action-btn { border-radius: 12px; padding: 12px 14px; font-size: 1rem; cursor:pointer; border:none; }
+.btn-edit { background: linear-gradient(90deg,#4fe6c5,#00cfff); color:#042; box-shadow: 0 12px 36px rgba(0,207,255,0.08); }
+.btn-delete { background: linear-gradient(90deg,#ff7a7a,#ff4a4a); color: white; box-shadow: 0 12px 36px rgba(255,74,74,0.08); }
+
+/* ---------------- Empty & helper text ---------------- */
+.empty { text-align:center; color:var(--muted); padding: 28px 12px; font-size: 1.05rem; }
+
+/* ---------------- Animations ---------------- */
+.fade-in { animation: fadeInUp .36s cubic-bezier(.2,.9,.2,1) both; }
+.slide-up { animation: slideUp .38s ease both; }
+@keyframes fadeInUp { from{opacity:0; transform:translateY(12px);} to{opacity:1; transform:none;} }
+@keyframes slideUp { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
+
+/* ---------------- Dialog styling ---------------- */
+dialog.confirm-dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(17,24,39,0.95), rgba(12,18,30,0.95));
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(2,8,20,0.85);
+  width: min(520px, 94%);
+}
+.dialog-actions { display:flex; gap:12px; justify-content:flex-end; margin-top: 14px; }
+.dialog-actions .btn { padding: 12px 16px; }
+
+/* ---------------- Accessibility & Focus ---------------- */
+.control-input:focus,
+.control-select:focus,
+.form-control:focus,
+.btn:focus {
+  outline: none;
+  box-shadow: 0 8px 28px rgba(107,92,255,0.10);
+  border-color: rgba(107,92,255,0.9);
+}
+
+/* ---------------- Utility small tweaks ---------------- */
+.small-muted { color: var(--muted); font-size: 0.95rem; }
+
+/* ---------------- Responsive adjustments ---------------- */
+@media (max-width: 820px) {
+  .container { padding: 18px; }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.6rem; }
+  .card { padding: 18px; border-radius: 12px; }
+  .form-control { font-size: 1rem; padding: 14px; height: 48px; }
+  textarea.form-control { min-height: 120px; }
+  .btn { font-size: 1rem; padding: 12px 14px; }
+}
+
+/* ---------------- Dropdown fallback: ensure dark dropdown where possible ---------------- */
+/* Some browsers ignore <option> styling — keep this, but behavior depends on platform */
+select.control-select option {
+  color: #fff !important;
+  background: var(--card-dark-2) !important;
+}
+
+/* If you used a .select-wrapper pattern earlier for a custom arrow, keep it but not required */
+.select-wrapper { position: relative; width: 100%; }
+.select-wrapper::after {
+  content: "▾";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255,255,255,0.6);
+  pointer-events: none;
+}
